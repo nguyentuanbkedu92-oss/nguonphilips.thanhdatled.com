@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nguonphilips.thanhdatled.com/sitemap.xml
