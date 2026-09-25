@@ -37,15 +37,16 @@
 
   :root { --brand-red:#d32f2f; --brand-blue:#0068ff; --text-dark:#222; --border:#e2e8f0; --radius:12px; }
   * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { overflow-x:hidden; max-width:100%; }
   img { max-width:100%; }
   body { font-family:'Segoe UI',Arial,sans-serif; color:var(--text-dark); background:#f4f6f9; line-height:1.6; padding-bottom:70px; }
   a { text-decoration:none; color:var(--brand-blue); }
   h1,h2,h3 { line-height:1.35; }
 
   .site-header { position:sticky; top:0; z-index:1000; background:#fff; border-bottom:1px solid var(--border); padding:12px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
-  .site-header .logo { display:flex; align-items:center; gap:10px; flex-shrink:0; }
-  .site-header .logo img { height:44px; width:auto; object-fit:contain; }
-  .site-header .logo .brand-name { font-size:18px; font-weight:800; color:#0f172a; letter-spacing:-0.3px; white-space:nowrap; }
+  .site-header .logo { display:flex; align-items:center; gap:10px; flex-shrink:1; min-width:0; overflow:hidden; }
+  .site-header .logo img { height:44px; width:auto; object-fit:contain; flex-shrink:0; }
+  .site-header .logo .brand-name { font-size:18px; font-weight:800; color:#0f172a; letter-spacing:-0.3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .site-header nav.desktop-nav { display:flex; gap:6px; font-weight:600; font-size:14.5px; align-items:center; flex-wrap:nowrap; white-space:nowrap; }
   .site-header nav a { padding:8px 12px; border-radius:6px; color:#222; }
   .site-header nav a:hover { background:#f4f6f9; }
@@ -70,7 +71,7 @@
 
   /* THANH DI ĐỘNG DƯỚI CÙNG */
   .mobile-cta-bar { display:none; position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:1px solid var(--border); z-index:9999; padding:8px 10px; justify-content:space-around; align-items:center; box-shadow:0 -4px 12px rgba(0,0,0,0.1); }
-  .mobile-cta-bar a { flex:1; text-align:center; padding:10px 4px; border-radius:8px; font-weight:700; font-size:13.5px; color:#fff; margin:0 3px; display:flex; align-items:center; justify-content:center; gap:5px; text-decoration:none; }
+  .mobile-cta-bar a { flex:1; min-width:0; text-align:center; padding:10px 4px; border-radius:8px; font-weight:700; font-size:13.5px; color:#fff; margin:0 3px; display:flex; align-items:center; justify-content:center; gap:5px; text-decoration:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .mobile-cta-bar .m-zalo { background:#0068ff; }
   .mobile-cta-bar .m-call { background:#d32f2f; }
   .mobile-cta-bar .m-chat { background:#0b1f3a; color:#ffcc00; border:1px solid rgba(255,204,0,0.4); }
@@ -87,6 +88,9 @@
     .mobile-cta-bar { display:flex !important; }
     .menu-toggle { display:block; }
     .container { padding:16px 14px !important; }
+
+    /* FIX: footer không ép cột tối thiểu 250px làm tràn ngang trên điện thoại nhỏ */
+    .site-footer > div { grid-template-columns: 1fr !important; }
   }
   @media (min-width:769px) {
     .mobile-nav { display:none !important; }
